@@ -1,0 +1,86 @@
+[
+    {
+        "_id": "67e3f7e0f17d430977b79225",
+        "name": "Anirban",
+        "image": "image.jpg",
+        "designation": "CEO",
+        "dateOfBirth": "1997-05-04T18:30:00.000Z",
+        "yearofExperience": 15,
+        "reportingManager": null,
+        "createdAt": "2025-03-26T12:49:36.497Z",
+        "updatedAt": "2025-03-26T12:49:36.497Z",
+        "__v": 0
+    },
+    {
+        "_id": "67e3f7f9f17d430977b79227",
+        "name": "Raja",
+        "image": "image.jpg",
+        "designation": "Manager",
+        "dateOfBirth": "1997-05-04T18:30:00.000Z",
+        "yearofExperience": 10,
+        "reportingManager": "67e3f7e0f17d430977b79225",
+        "createdAt": "2025-03-26T12:50:01.243Z",
+        "updatedAt": "2025-03-26T12:50:01.243Z",
+        "__v": 0
+    },
+    {
+        "_id": "67e3f807f17d430977b79229",
+        "name": "Suraj",
+        "image": "image.jpg",
+        "designation": "Manager",
+        "dateOfBirth": "1997-05-04T18:30:00.000Z",
+        "yearofExperience": 8,
+        "reportingManager": "67e3f7e0f17d430977b79225",
+        "createdAt": "2025-03-26T12:50:15.977Z",
+        "updatedAt": "2025-03-26T12:50:15.977Z",
+        "__v": 0
+    },
+    {
+        "_id": "67e3f845f17d430977b7922b",
+        "name": "Puja",
+        "image": "image.jpg",
+        "designation": "Wroker",
+        "dateOfBirth": "1997-05-04T18:30:00.000Z",
+        "yearofExperience": 8,
+        "reportingManager": "67e3f7f9f17d430977b79227",
+        "createdAt": "2025-03-26T12:51:17.393Z",
+        "updatedAt": "2025-03-26T12:51:17.393Z",
+        "__v": 0
+    },
+    {
+        "_id": "67e3f85cf17d430977b7922d",
+        "name": "Riya",
+        "image": "image.jpg",
+        "designation": "Wroker",
+        "dateOfBirth": "1997-05-04T18:30:00.000Z",
+        "yearofExperience": 8,
+        "reportingManager": "67e3f7f9f17d430977b79227",
+        "createdAt": "2025-03-26T12:51:40.848Z",
+        "updatedAt": "2025-03-26T12:51:40.848Z",
+        "__v": 0
+    },
+    {
+        "_id": "67e3f87cf17d430977b7922f",
+        "name": "Diya",
+        "image": "image.jpg",
+        "designation": "Wroker",
+        "dateOfBirth": "1997-05-04T18:30:00.000Z",
+        "yearofExperience": 8,
+        "reportingManager": "67e3f807f17d430977b79229",
+        "createdAt": "2025-03-26T12:52:12.301Z",
+        "updatedAt": "2025-03-26T12:52:12.301Z",
+        "__v": 0
+    },
+    {
+        "_id": "67e3f880f17d430977b79231",
+        "name": "Hiya",
+        "image": "image.jpg",
+        "designation": "Wroker",
+        "dateOfBirth": "1997-05-04T18:30:00.000Z",
+        "yearofExperience": 8,
+        "reportingManager": "67e3f807f17d430977b79229",
+        "createdAt": "2025-03-26T12:52:16.237Z",
+        "updatedAt": "2025-03-26T12:52:16.237Z",
+        "__v": 0
+    }
+]

@@ -1,0 +1,7 @@
+# Need to use code splitting
+
+# We can use optimize the flow using cache
+
+# Create a helper function fetching api
+
+# handle images
