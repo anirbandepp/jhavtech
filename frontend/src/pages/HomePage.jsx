@@ -119,10 +119,7 @@ const HomePage = () => {
                 reportingManager: RM
             };
 
-            const response = await axios.post(
-                `${import.meta.env.VITE_BACKEND_URL}/employee/create`,
-                payload
-            );
+            const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/employee/create`, payload);
 
             if (response?.status === 201) {
                 const { message } = response?.data
@@ -130,7 +127,6 @@ const HomePage = () => {
 
                 navigate(`/employee-tree`);
             } else {
-                console.log('try error');
                 console.log(response);
             }
         } catch (error) {
