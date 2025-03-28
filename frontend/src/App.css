@@ -56,7 +56,7 @@ h1 {
     left: 50%;
     width: 0;
     height: 20px;
-    border-left: 2px solid #ccc;
+    border-left: 3px solid #1c1c1c;
 }
 
 .tree ul>div {
@@ -112,13 +112,13 @@ h1 {
     right: 50%;
     width: 50%;
     height: 20px;
-    border-top: 2px solid #ccc;
+    border-top: 3px solid #1c1c1c;
 }
 
 .tree li::after {
     right: auto;
     left: 50%;
-    border-left: 2px solid #ccc;
+    border-left: 3px solid #1c1c1c;
 }
 
 .tree li:only-child::after,
@@ -136,7 +136,7 @@ h1 {
 }
 
 .tree li:last-child::before {
-    border-right: 2px solid #ccc;
+    border-right: 3px solid #1c1c1c;
     border-radius: 0 5px 0 0;
 }
 
@@ -151,5 +151,5 @@ h1 {
     left: 50%;
     width: 0;
     height: 20px;
-    border-left: 2px solid #ccc;
+    border-left: 3px solid #1c1c1c;
 }

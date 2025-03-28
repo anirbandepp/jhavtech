@@ -18,13 +18,7 @@ const HomePage = () => {
 
     const navigate = useNavigate();
 
-    const { employees, loading, error: employeeError } = useEmployees(`${import.meta.env.VITE_BACKEND_URL}/get`);
-
-
-    // *** Remove CEO From employees
-    // const filteredEmployees = employees?.filter((eachItem) => eachItem?.designation != 'CEO');
-    // console.log(employees.length);
-
+    const { employees, loading, error: employeeError } = useEmployees(`${import.meta.env.VITE_BACKEND_URL}/employee/get`);
 
     const [imageUploading, setImageUploading] = useState(false);
 
@@ -126,7 +120,7 @@ const HomePage = () => {
             };
 
             const response = await axios.post(
-                `${import.meta.env.VITE_BACKEND_URL}/create`,
+                `${import.meta.env.VITE_BACKEND_URL}/employee/create`,
                 payload
             );
 

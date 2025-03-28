@@ -7,7 +7,7 @@ import useEmployees from "../hooks/useEmployees";
 
 const EmployeeTree = () => {
 
-    const { employees, loading, error } = useEmployees(`${import.meta.env.VITE_BACKEND_URL}/get`);
+    const { employees, loading, error } = useEmployees(`${import.meta.env.VITE_BACKEND_URL}/employee/get`);
 
     // *** Find the CEO (employee with no reporting manager)
     const findRootEmployee = () => employees?.find(emp => emp?.reportingManager === null);
