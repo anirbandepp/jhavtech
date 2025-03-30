@@ -17,7 +17,8 @@ function useEmployees(apiUrl) {
                 setEmployees(result);
                 setError(null);
             } catch (error) {
-                setError(error?.response?.data?.message);
+                console.log(error?.response?.data?.message);
+                setError('Faild the fetch Employees');
                 setEmployees([]);
             } finally {
                 setLoading(false);

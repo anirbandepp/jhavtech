@@ -3,10 +3,11 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 // *** Import Internal Hooks 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // *** Import Custom Hooks
 import useEmployees from '../hooks/useEmployees';
+import useUploadCloudinary from '../hooks/useUploadCloudinary';
 
 // *** Import Components
 import Layout from '../components/BaseLayout/Layout';
@@ -18,9 +19,8 @@ const HomePage = () => {
 
     const navigate = useNavigate();
 
-    const { employees, loading, error: employeeError } = useEmployees(`${import.meta.env.VITE_BACKEND_URL}/employee/get`);
-
-    const [imageUploading, setImageUploading] = useState(false);
+    const { employees, loading: employeeLoading, error: employeeError } = useEmployees(`${import.meta.env.VITE_BACKEND_URL}/employee/get`);
+    const { imageURL, imageUploading, imageUploadError, uploadImageHandler } = useUploadCloudinary();
 
     const [image, setImage] = useState(null);
 
@@ -33,7 +33,20 @@ const HomePage = () => {
     const [sendingRequest, setSendingRequest] = useState(false);
 
     const [error, setError] = useState('');
-    const [success, setSuccess] = useState('')
+    const [success, setSuccess] = useState('');
+
+    useEffect(() => {
+        setImage(imageURL);
+
+        if (imageUploadError) {
+            setError(imageUploadError);
+        }
+
+        if (employeeError) {
+            setError(employeeError);
+        }
+
+    }, [imageURL, imageUploadError, employeeError])
 
     const uploadFile = async (event) => {
         try {
@@ -54,23 +67,14 @@ const HomePage = () => {
                 return;
             }
 
-            setError("");
-            setImageUploading(true);
+            await uploadImageHandler(file);
 
-            const formData = new FormData();
-            formData.append("file", file);
-            formData.append("upload_preset", "delta_upload");
-            formData.append("cloud_name", import.meta.env.VITE_CLOUD_NAME);
-
-            const { data } = await axios.post(import.meta.env.VITE_CLOUDINARY_URL, formData);
-            console.log(data.secure_url);
-            setImage(data.secure_url)
         } catch (error) {
             console.log(error);
-            setError(err.message);
+            setError(error.message);
         }
         finally {
-            setImageUploading(false);
+            // TODO: 
         }
     }
 
@@ -124,7 +128,6 @@ const HomePage = () => {
             if (response?.status === 201) {
                 const { message } = response?.data
                 setSuccess(message);
-
                 navigate(`/employee-tree`);
             } else {
                 console.log(response);
@@ -186,20 +189,25 @@ const HomePage = () => {
                                         onInput={(e) => setExperience(e.target.value)} />
                                 </div>
 
-                                <div className="mb-3">
-                                    <label htmlFor="YearsOfExperience" className="form-label">Reporting Manager</label>
-                                    <select className="form-select" aria-label="Default select example"
-                                        defaultValue={''} onChange={(e) => setRM(e.target.value)} >
-                                        <option value=''>---Select--</option>
-                                        {
-                                            employees?.map((item) => (
-                                                <option value={item._id} key={item._id}>
-                                                    {item?.name}
-                                                </option>
-                                            ))
-                                        }
-                                    </select>
-                                </div>
+                                {
+                                    !employeeLoading
+                                        ? <div className="mb-3">
+                                            <label htmlFor="YearsOfExperience" className="form-label">Reporting Manager</label>
+                                            <select className="form-select" aria-label="Default select example"
+                                                defaultValue={''} onChange={(e) => setRM(e.target.value)} >
+                                                <option value=''>---Select--</option>
+                                                {
+                                                    employees?.map((item) => (
+                                                        <option value={item._id} key={item._id}>
+                                                            {item?.name}
+                                                        </option>
+                                                    ))
+                                                }
+                                            </select>
+                                        </div>
+                                        : <p>Loading Reporting Managers</p>
+                                }
+
 
                                 {error && <ErrorUI message={error} />}
 

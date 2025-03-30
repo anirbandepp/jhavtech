@@ -4,12 +4,12 @@ import { useState } from 'react';
 function useUploadCloudinary() {
 
     // *** State for employees data, loading, and error
-    const [imageURL, setImageURL] = useState('');
+    const [imageURL, setImageURL] = useState(null);
     const [imageUploading, setImageUploading] = useState(false);
     const [imageUploadError, setImageUploadError] = useState(null);
 
     // *** Upload Image Handler
-    const uploadImageHook = async (file) => {
+    const uploadImageHandler = async (file) => {
         try {
             setImageUploading(true);
 
@@ -30,7 +30,7 @@ function useUploadCloudinary() {
         }
     };
 
-    return { imageURL, imageUploading, imageUploadError, uploadImageHook };
+    return { imageURL, imageUploading, imageUploadError, uploadImageHandler };
 }
 
 export default useUploadCloudinary;
