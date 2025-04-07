@@ -61,6 +61,7 @@ const EmployeeTree = () => {
             <section className="container">
                 <div className="org-tree-container">
                     <h1>Organization Hierarchy</h1>
+
                     <div className="org-tree">
                         <ul className="tree">
                             {rootEmployee ? renderEmployee(rootEmployee) : <p>No CEO found</p>}

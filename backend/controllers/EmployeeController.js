@@ -7,6 +7,7 @@ const Employee = require('../models/Employee');
 // *** Import Helpers
 const EmployeeSchema = require("../validation/EmployeeValidation");
 const logger = require("../utils/logger");
+const cache = require('../config/Cache');
 
 const createEmployee = async (req, res, next) => {
     try {
@@ -52,6 +53,9 @@ const createEmployee = async (req, res, next) => {
 
         await employee.save();
 
+        // *** Delete from in-memory cache
+        cache.del(req.originalUrl);
+
         // *** Send Response
         return res.status(201).json({
             success: true,
@@ -68,12 +72,21 @@ const createEmployee = async (req, res, next) => {
 // Get all employees
 const getAllEmployees = async (req, res) => {
     try {
+
         const employees = await Employee.find();
-        return res.status(200).json({
+
+        // *** Create Response
+        const response = {
+            fromCache: false,
             success: true,
             result: employees,
             message: 'Employee fetched successfully'
-        });
+        }
+
+        // *** Store in in-memory cache
+        cache.set(req.originalUrl, response);
+
+        return res.status(200).json(response);
 
     } catch (err) {
         console.log(err);

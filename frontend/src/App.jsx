@@ -2,13 +2,16 @@ import { Routes, Route } from "react-router-dom";
 
 import { lazy, Suspense } from 'react';
 
+import Loader from "./components/PreLoader/Loader";
+
 const HomePage = lazy(() => import('./pages/HomePage'));
 const EmployeeTree = lazy(() => import('./pages/EmployeeTree'));
 const PageNotFound = lazy(() => import('./pages/PageNotFound'));
 
 const App = () => {
+
   return (
-    <Suspense>
+    <Suspense fallback={<Loader />}>
 
       <Routes>
 

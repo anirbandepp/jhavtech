@@ -2,7 +2,7 @@ const Spinner = () => {
 
     const style = {
         position: "absolute",
-        right: "-40px",
+        right: "0px",
         top: "50%",
     };
 

@@ -40,14 +40,44 @@ const HomePage = () => {
 
         if (imageUploadError) {
             setError(imageUploadError);
+        } else {
+            setError("");
         }
 
         if (employeeError) {
             setError(employeeError);
+        } else {
+            setError("");
         }
 
-    }, [imageURL, imageUploadError, employeeError])
+    }, [imageURL, imageUploadError, employeeError]);
 
+    const userInputHandler = (e) => {
+
+        setError("");
+
+        if (e.target.name === "name") {
+            setName(e.target.value);
+        }
+
+        if (e.target.name === "designation") {
+            setDesignation(e.target.value);
+        }
+
+        if (e.target.name === "dob") {
+            setDOB(e.target.value);
+        }
+
+        if (e.target.name === "experience") {
+            setExperience(e.target.value);
+        }
+
+        if (e.target.name === "rm") {
+            setRM(e.target.value);
+        }
+    }
+
+    // *** Upload Files Into Cloudinary
     const uploadFile = async (event) => {
         try {
             const file = event.target.files[0];
@@ -78,6 +108,7 @@ const HomePage = () => {
         }
     }
 
+    // *** Handler Submit
     async function handlerSumbit(event) {
         try {
             if (image == null) {
@@ -168,33 +199,34 @@ const HomePage = () => {
                                 <div className="mb-3">
                                     <label htmlFor="inputName" className="form-label">Employee Name</label>
                                     <input type="text" className="form-control" id="inputName" name='name'
-                                        onInput={(e) => setName(e.target.value)} />
+                                        onInput={(e) => userInputHandler(e)} />
                                 </div>
 
                                 <div className="mb-3">
                                     <label htmlFor="Designation" className="form-label">Designation</label>
                                     <input type="text" className="form-control" id="Designation" name='designation'
-                                        onInput={(e) => setDesignation(e.target.value)} />
+                                        onInput={(e) => userInputHandler(e)} />
                                 </div>
 
                                 <div className="mb-3">
                                     <label htmlFor="dob" className="form-label">Date of Birth</label>
-                                    <input type="date" className="form-control" id="dob" onChange={(e) => setDOB(e.target.value)} />
+                                    <input type="date" className="form-control" id="dob" name='dob'
+                                        onInput={(e) => userInputHandler(e)} />
                                 </div>
 
                                 <div className="mb-3">
                                     <label htmlFor="YearsOfExperience" className="form-label">Years of experience</label>
                                     <input type="number" className="form-control" id="YearsOfExperience" min={1}
-                                        value={experience}
-                                        onInput={(e) => setExperience(e.target.value)} />
+                                        value={experience} name='experience'
+                                        onInput={(e) => userInputHandler(e)} />
                                 </div>
 
                                 {
                                     !employeeLoading
                                         ? <div className="mb-3">
                                             <label htmlFor="YearsOfExperience" className="form-label">Reporting Manager</label>
-                                            <select className="form-select" aria-label="Default select example"
-                                                defaultValue={''} onChange={(e) => setRM(e.target.value)} >
+                                            <select className="form-select" aria-label="Default select example" name='rm'
+                                                defaultValue={''} onChange={(e) => userInputHandler(e)} >
                                                 <option value=''>---Select--</option>
                                                 {
                                                     employees?.map((item) => (
@@ -207,7 +239,6 @@ const HomePage = () => {
                                         </div>
                                         : <p>Loading Reporting Managers</p>
                                 }
-
 
                                 {error && <ErrorUI message={error} />}
 

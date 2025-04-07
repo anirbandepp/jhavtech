@@ -1,0 +1,7 @@
+{"level":"warn","message":"Validation error","service":"user-service"}
+{"level":"error","message":"ReferenceError: response is not defined\n    at createEmployee (D:\\Assignment\\jhavtech\\backend\\controllers\\EmployeeController.js:57:36)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","service":"user-service"}
+{"level":"error","message":"BadRequestError: Employee already exists\n    at createEmployee (D:\\Assignment\\jhavtech\\backend\\controllers\\EmployeeController.js:41:27)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","service":"user-service"}
+{"level":"error","message":"ReferenceError: response is not defined\n    at createEmployee (D:\\Assignment\\jhavtech\\backend\\controllers\\EmployeeController.js:57:36)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","service":"user-service"}
+{"level":"error","message":"BadRequestError: Employee already exists\n    at createEmployee (D:\\Assignment\\jhavtech\\backend\\controllers\\EmployeeController.js:41:27)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","service":"user-service"}
+{"level":"warn","message":"Validation error","service":"user-service"}
+{"level":"error","message":"BadRequestError: CEO already exists\n    at createEmployee (D:\\Assignment\\jhavtech\\backend\\controllers\\EmployeeController.js:33:27)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","service":"user-service"}
